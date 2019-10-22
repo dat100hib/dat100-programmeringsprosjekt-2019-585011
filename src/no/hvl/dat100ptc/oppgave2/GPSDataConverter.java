@@ -1,7 +1,10 @@
 package no.hvl.dat100ptc.oppgave2;
 
+
 import no.hvl.dat100ptc.TODO;
 import no.hvl.dat100ptc.oppgave1.GPSPoint;
+
+
 
 public class GPSDataConverter {
 
@@ -19,8 +22,13 @@ public class GPSDataConverter {
 		
 		// TODO
 		// OPPGAVE - START
+		hr = Integer.parseInt(timestr.substring(11,13)); //ant timer ligg fra index 11 til 13
+		min = Integer.parseInt(timestr.substring(14,16)); //ant min ligg fra index 14 til 16
+		sec = Integer.parseInt(timestr.substring(17,19)); //ant sec ligg fra index 17 til 19
 		
-		throw new UnsupportedOperationException(TODO.method());
+		secs = sec + (min*60) + (hr*3600); //sekund + ant min * 60 + ant tima * 3600 = sekund
+		return secs;
+		//throw new UnsupportedOperationException(TODO.method());
 
 		// OPPGAVE - SLUTT
 		
@@ -32,7 +40,42 @@ public class GPSDataConverter {
 
 		// TODO - START ;
 		
-		throw new UnsupportedOperationException(TODO.method());
+		
+		int time;
+		double latitude, longitude, elevation;
+		
+		//gpspoint = Double.parseDouble(gpspoint);
+		
+		//longitude = Double.parseDouble(longitudeStr);
+		//latitude = Double.parseDouble(latitudeStr);
+		//elevation = Double.parseDouble(elevationStr);
+		//time = Integer.parseInt(timeStr);
+		
+		
+		latitude = Double.parseDouble(latitudeStr.substring(0,7));
+		longitude = Double.parseDouble(longitudeStr.substring(0,7));
+		elevation = Double.parseDouble(elevationStr.substring(0,4));
+		time = toSeconds(timeStr);
+		GPSPoint p = new GPSPoint(time,latitude,longitude,elevation);
+		
+		
+		
+		/*funker ikkje:
+		 latitude = Double.parseDouble(latitudeStr.substring(25,34));
+		longitude = Double.parseDouble(longitudeStr.substring(35,43));
+		elevation = Double.parseDouble(elevationStr.substring(36,40));
+		elevationStr =  elevationStr.substring(36-40);
+		time = toSeconds(timeStr);
+		latitude = gpspoint.getLatitude();
+		longitude = gpspoint.getLongitude();
+		elevation = gpspoint.getElevation();
+		*/
+		
+		
+		return p;
+		
+		
+		//throw new UnsupportedOperationException(TODO.method());
 
 		// OPPGAVE - SLUTT ;
 	    

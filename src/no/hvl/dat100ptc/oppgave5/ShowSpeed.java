@@ -47,8 +47,28 @@ public class ShowSpeed extends EasyGraphics {
 		int timescaling = Integer.parseInt(getText("Tidsskalering"));
 				
 		// TODO - START
+		double[] speeds = gpscomputer.speeds();
+		setColor(0,0,255);
+		int startX = 0;
+		int startY = ybase;
+		int endX = startX;
+		int endY = 0;
+		int gj = 0;
 		
-		throw new UnsupportedOperationException(TODO.method());
+		for (int i = 0; i < N; i++) {
+			startX = i*2+MARGIN;
+			endX = i*2+MARGIN;
+			endY = ybase - (int) GPSUtils.speed(gpspoints[i],gpspoints[i+1])*timescaling;
+			drawLine(startX , startY, endX, endY);
+		}
+		for (double speed : speeds) {
+			gj += (int) speed;
+		}
+		
+		setColor(0,255,0);
+		gj = gj / speeds.length;
+		drawLine(2+MARGIN,ybase - gj, speeds.length* 2 + MARGIN, ybase-gj);
+		//throw new UnsupportedOperationException(TODO.method());
 	
 		// TODO - SLUTT
 	}
