@@ -52,9 +52,9 @@ public class GPSDataConverter {
 		//time = Integer.parseInt(timeStr);
 		
 		
-		latitude = Double.parseDouble(latitudeStr.substring(0,7));
-		longitude = Double.parseDouble(longitudeStr.substring(0,7));
-		elevation = Double.parseDouble(elevationStr.substring(0,4));
+		latitude = Double.parseDouble(latitudeStr);
+		longitude = Double.parseDouble(longitudeStr);
+		elevation = Double.parseDouble(elevationStr);
 		time = toSeconds(timeStr);
 		GPSPoint p = new GPSPoint(time,latitude,longitude,elevation);
 		
